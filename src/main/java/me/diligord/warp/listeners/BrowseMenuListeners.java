@@ -17,9 +17,9 @@ public class BrowseMenuListeners implements Listener {
     @EventHandler
     public static void onMenuClick(InventoryClickEvent e) {
 
-        /* TODO:
+        /* TODO (in order of priority, first is highest priority):
             - find a better way to check if inventory is my custom menu
-            - find a better way to check for my custom item (maybe Persistent Data Containers?)
+            - find a better way to check if it is a custom item (maybe Persistent Data Containers?)
         */
         if (ChatColor.stripColor(String.valueOf(e.getView().title())).equals("Warps")) {
             if (e.getCurrentItem() == null) return;

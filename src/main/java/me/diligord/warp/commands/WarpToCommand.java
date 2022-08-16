@@ -1,12 +1,18 @@
 package me.diligord.warp.commands;
 
 import me.diligord.warp.Warp;
+import me.diligord.warp.utils.WarpUtils;
+import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Objects;
 
 public class WarpToCommand implements CommandExecutor {
 
@@ -27,16 +33,19 @@ public class WarpToCommand implements CommandExecutor {
         if (args.length < 1) return false;
 
         String warpName = args[0];
+        List warps = plugin.getConfig().getList("warps");
+        int warpIndex = WarpUtils.findIndexOfWarp(warps, warpName);
 
-        if (plugin.getConfig().get("warps." + warpName) == null) {
-            sender.sendMessage("${ChatColor.RED}Warp not found.");
+        if (warps == null || warpIndex == -1) {
+            sender.sendMessage(ChatColor.RED + "Warp not found.");
             return true;
         }
 
-        Location warpLocation = (Location) plugin.getConfig().get("warps." + warpName + ".location");
+        Map warp = (Map) Objects.requireNonNull(plugin.getConfig().getList("warps")).get(warpIndex);
 
-        assert warpLocation != null;
-        ((Player) sender).teleport(warpLocation);
+        // Teleport the player
+        sender.sendMessage("Warping to " + warp.get("name").toString() + ".");
+        ((Player) sender).teleport((Location) warp.get("location"));
 
         return true;
     }
