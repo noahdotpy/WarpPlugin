@@ -1,0 +1,16 @@
+name: Warp
+version: '${version}'
+main: me.diligord.warp.Warp
+api-version: 1.19
+authors: [ Diligord1 ]
+description: Simple warps plugin.
+commands:
+  warps:
+    description: Open the warps menu.
+    usage: /<command>
+  setwarp:
+    description: Set a warp.
+    usage: /<command> WARP_NAME
+  warp:
+    description: Teleport to a warp.
+    usage: /<command> WARP_NAME
