@@ -22,7 +22,7 @@ public class WarpUtils {
     }
 
 
-    public static Map<String, Object> makeNewSetWarpMap(String warpName, Location warpLocation, ItemStack itemStack) {
+    public static Map<String, Object> makeNewWarpMap(String warpName, Location warpLocation, ItemStack itemStack) {
         return Map.of(
             "name", warpName,
             "location", warpLocation,

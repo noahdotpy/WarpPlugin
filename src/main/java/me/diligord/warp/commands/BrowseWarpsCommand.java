@@ -8,11 +8,11 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
-public class BrowseMenuCommand implements CommandExecutor {
+public class BrowseWarpsCommand implements CommandExecutor {
 
     public final Warp plugin;
 
-    public BrowseMenuCommand(Warp plugin) {
+    public BrowseWarpsCommand(Warp plugin) {
         this.plugin = plugin;
     }
 

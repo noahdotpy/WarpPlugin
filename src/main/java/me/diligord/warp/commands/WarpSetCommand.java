@@ -2,6 +2,7 @@ package me.diligord.warp.commands;
 
 import me.diligord.warp.Warp;
 import me.diligord.warp.utils.WarpUtils;
+import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
 import org.bukkit.Material;
@@ -34,7 +35,7 @@ public class WarpSetCommand implements CommandExecutor {
         if (args.length < 1) return false;
 
         if (!(sender.hasPermission("warp.setWarp"))) {
-            sender.sendMessage(ChatColor.RED + "You do not have permission to execute this command.");
+            sender.sendMessage(Bukkit.permissionMessage());
             return true;
         }
 
@@ -44,7 +45,7 @@ public class WarpSetCommand implements CommandExecutor {
 
         List<Map<String, Object>> warps = (List<Map<String, Object>>) plugin.getConfig().getList("warps");
 
-        Map<String, Object> newWarpMap = WarpUtils.makeNewSetWarpMap(
+        Map<String, Object> newWarpMap = WarpUtils.makeNewWarpMap(
                 warpName,
                 warpLocation,
                 defaultItemStack
